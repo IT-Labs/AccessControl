@@ -1,8 +1,0 @@
-c:\D\PROJECTS\AccessControl\Communication\bin\Debug\netstandard2.0\Communication.deps.json
-c:\D\PROJECTS\AccessControl\Communication\bin\Debug\netstandard2.0\Communication.dll
-c:\D\PROJECTS\AccessControl\Communication\bin\Debug\netstandard2.0\Communication.pdb
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netstandard2.0\Communication.csprojAssemblyReference.cache
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netstandard2.0\Communication.AssemblyInfoInputs.cache
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netstandard2.0\Communication.AssemblyInfo.cs
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netstandard2.0\Communication.dll
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netstandard2.0\Communication.pdb

@@ -1,8 +1,0 @@
-c:\D\PROJECTS\AccessControl\Communication\bin\Debug\netcoreapp3.1\Communication.deps.json
-c:\D\PROJECTS\AccessControl\Communication\bin\Debug\netcoreapp3.1\Communication.dll
-c:\D\PROJECTS\AccessControl\Communication\bin\Debug\netcoreapp3.1\Communication.pdb
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netcoreapp3.1\Communication.csprojAssemblyReference.cache
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netcoreapp3.1\Communication.AssemblyInfoInputs.cache
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netcoreapp3.1\Communication.AssemblyInfo.cs
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netcoreapp3.1\Communication.dll
-c:\D\PROJECTS\AccessControl\Communication\obj\Debug\netcoreapp3.1\Communication.pdb
