@@ -1,0 +1,6 @@
+projectKey=AccessControl
+serverUrl=http://dev-docker:9001
+serverVersion=7.9.2.30863
+dashboardUrl=http://dev-docker:9001/dashboard?id=AccessControl
+ceTaskId=AXECy90CZcAWJk94IEYQ
+ceTaskUrl=http://dev-docker:9001/api/ce/task?id=AXECy90CZcAWJk94IEYQ

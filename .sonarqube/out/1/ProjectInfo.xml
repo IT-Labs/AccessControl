@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>SoyalControllers</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>0ac7860d-e6ee-4c15-9f4a-819fd96e7457</ProjectGuid>
+  <FullPath>c:\D\PROJECTS\AccessControl\SoyalControllers\SoyalControllers.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="c:\D\PROJECTS\AccessControl\.sonarqube\out\1\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">c:\D\PROJECTS\AccessControl\SoyalControllers\bin\Debug\netcoreapp3.1\SoyalControllers.dll.RoslynCA.json|c:\D\PROJECTS\AccessControl\SoyalControllers\bin\Debug\netcoreapp3.1\SoyalControllers.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">c:\D\PROJECTS\AccessControl\.sonarqube\out\1</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+</ProjectInfo>

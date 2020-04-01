@@ -1,0 +1,8 @@
+df729506f6af8aab770136190af91fa95be7d64f
+
+
+dotnet "C:\D\StandAlone\SonarQube-dotnetcore 2.1.7\SonarScanner.MSBuild.dll" begin /k:"AccessControl" /d:sonar.host.url="http://dev-docker:9001" /d:sonar.login="df729506f6af8aab770136190af91fa95be7d64f"
+
+dotnet build AccessControl.sln
+
+dotnet "C:\D\StandAlone\SonarQube-dotnetcore 2.1.7\SonarScanner.MSBuild.dll" end /d:sonar.login="df729506f6af8aab770136190af91fa95be7d64f"
