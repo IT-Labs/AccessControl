@@ -1,8 +1,10 @@
 using System;
 using System.Globalization;
-using Communication.Sockets;
 using System.Threading.Tasks;
 using System.Text;
+
+using Communication.Sockets;
+using SoyalControllers.ControllerIdentification;
 
 namespace SoyalControllers
 {
@@ -16,7 +18,8 @@ namespace SoyalControllers
         private readonly byte _head = Byte.Parse("7E", NumberStyles.HexNumber);
         private readonly byte _cmd = Byte.Parse("87", NumberStyles.HexNumber);
 
-        public GetUserData(IControllerAddress controllerAddress) : base (controllerAddress)
+        public GetUserData(IControllerIdentificationService controllerIdentificationService, IAsyncClient asyncClient)
+        : base (controllerIdentificationService, asyncClient)
         {
         }
 
@@ -24,14 +27,17 @@ namespace SoyalControllers
         /// Returns card content for selected node
         /// Input values List<addressHigh, addressLow>
         /// </summary>
-        /// <returns>Return content of the cards for selected node ID</returns>
+        /// <returns>
+        /// Return content of the cards for selected node ID
+        /// NodeId = "Destination ID" in the documentation
+        /// </returns>
         public async Task<string> Execute(int[,] cards)
         {
-            byte[] msg = new byte[7 + cards.Length * 2]; // Each card element consists 2 bytes
+            byte[] msg = new byte[7 + cards.Length * 2]; // Each card element consists of 2 bytes
 
             msg[0] = _head;
             msg[1] = Convert.ToByte(msg.Length - 2);
-            msg[2] = base._destID;
+            msg[2] = Convert.ToByte(base._controllerAddress.NodeId);
             msg[3] = _cmd;
 
             for(int i = 0; i < cards.Length / 2; i++)
@@ -64,7 +70,7 @@ namespace SoyalControllers
             msg[msg.Length - 2] = XORandSUM[0];
             msg[msg.Length - 1] = XORandSUM[1];
 
-            byte[] response = await new AsyncClient().StartClient(base._ip, base._port, msg).ConfigureAwait(false);
+            byte[] response = await base._asyncClient.StartClient(base._controllerAddress.IpAddress, base._controllerAddress.Port, msg).ConfigureAwait(false);
 
             if(!IsValidResponse(response))
             {

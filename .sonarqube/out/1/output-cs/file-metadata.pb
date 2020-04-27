@@ -1,6 +1,7 @@
 =
 4c:\D\PROJECTS\AccessControl\SoyalControllers\Base.csutf-8J
-Ac:\D\PROJECTS\AccessControl\SoyalControllers\ControllerAddress.csutf-8H
+Ac:\D\PROJECTS\AccessControl\SoyalControllers\ControllerAddress.csutf-8}
+tc:\D\PROJECTS\AccessControl\SoyalControllers\ControllerIdentification\RequestHostControllerIdentificationStrategy.csutf-8H
 ?c:\D\PROJECTS\AccessControl\SoyalControllers\GetDeviceStatus.csutf-8I
 @c:\D\PROJECTS\AccessControl\SoyalControllers\GetRealTimeClock.csutf-8D
 ;c:\D\PROJECTS\AccessControl\SoyalControllers\GetUserData.csutf-8b

@@ -12,28 +12,16 @@ namespace API.Controllers
     [Route("[controller]")]
     public class DeviceStatusController : ControllerBase
     {
-        private readonly IControllerAddress _controllerAddress; 
-        private readonly IGetDeviceStatus _getDeviceStatus;       
-        private readonly ILogger<UserDataController> _logger;
+        private readonly IGetDeviceStatus _getDeviceStatus;
 
-        public DeviceStatusController(
-            IControllerAddress controllerAddress,
-            IGetDeviceStatus getDeviceStatus,
-            ILogger<UserDataController> logger
-        )
+        public DeviceStatusController(IGetDeviceStatus getDeviceStatus)
         {
-            _controllerAddress = controllerAddress;
             _getDeviceStatus = getDeviceStatus;
-            _logger = logger;
         }
 
         [HttpGet]
         public async Task<string> Get()
         {
-            _controllerAddress.IpAddress = "192.168.5.26";
-            _controllerAddress.Port = 1621;
-            _controllerAddress.NodeId = 3;
-
             byte[] response = await _getDeviceStatus.Execute();
 
             StringBuilder sb = new StringBuilder();

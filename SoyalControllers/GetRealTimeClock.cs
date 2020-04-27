@@ -1,7 +1,9 @@
 using System;
 using System.Globalization;
-using Communication.Sockets;
 using System.Threading.Tasks;
+
+using Communication.Sockets;
+using SoyalControllers.ControllerIdentification;
 
 namespace SoyalControllers
 {
@@ -15,21 +17,24 @@ namespace SoyalControllers
         private readonly byte _head = Byte.Parse("7E", NumberStyles.HexNumber);
         private readonly byte _cmd = Byte.Parse("24", NumberStyles.HexNumber);
 
-        public GetRealTimeClock(IControllerAddress controllerAddress) : base (controllerAddress)
+        public GetRealTimeClock(IControllerIdentificationService controllerIdentificationService, IAsyncClient asyncClient)
+        : base (controllerIdentificationService, asyncClient)
         {
         }
 
         /// <summary>
         /// Return current clock time from the selected node
         /// </summary>
-        /// <returns>Real Time Clock in a DateTime format</returns>
+        /// <returns>
+        /// Real Time Clock in a DateTime format
+        /// </returns>
         public async Task<DateTime> Execute()
         {
             byte[] msg = new byte[6]; // head, length, destID, cmd, xor, sum
 
             msg[0] = _head;
             msg[1] = Convert.ToByte(msg.Length - 2); // length of stream - exclude head and length params
-            msg[2] = base._destID;
+            msg[2] = Convert.ToByte(base._controllerAddress.NodeId);
             msg[3] = _cmd;
 
             byte[] XORandSUM = base.CalculateXORandSUM(msg);
@@ -37,7 +42,7 @@ namespace SoyalControllers
             msg[msg.Length - 2] = XORandSUM[0];
             msg[msg.Length - 1] = XORandSUM[1];
 
-            byte[] response = await new AsyncClient().StartClient(base._ip, base._port, msg).ConfigureAwait(false);
+            byte[] response = await base._asyncClient.StartClient(base._controllerAddress.IpAddress, base._controllerAddress.Port, msg).ConfigureAwait(false);
 
             if(!IsValidResponse(response))
             {
@@ -55,8 +60,6 @@ namespace SoyalControllers
                     Convert.ToInt32(response[i])
                 ));
             }
-
-            Console.Write(sb.ToString());
 
             // The return value is the Real Time Clock read from the device
             return new DateTime(

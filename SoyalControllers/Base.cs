@@ -2,19 +2,20 @@ using System;
 using System.Globalization;
 using System.Text;
 
+using SoyalControllers.ControllerIdentification;
+using Communication.Sockets;
+
 namespace SoyalControllers
 {
     public abstract class Base
     {
-        internal readonly byte _destID;
-        internal readonly string _ip;
-        internal readonly int _port;
+        protected readonly IControllerAddress _controllerAddress;
+        protected readonly IAsyncClient _asyncClient;
 
-        protected Base (IControllerAddress controllerAddress)
+        protected Base (IControllerIdentificationService controllerIdentificationService, IAsyncClient asyncClient)
         {
-            _ip = controllerAddress.IpAddress;
-            _port = controllerAddress.Port;
-            _destID = Convert.ToByte(controllerAddress.NodeId);
+            _controllerAddress = controllerIdentificationService.GetControllerAddress().GetAwaiter().GetResult();
+            _asyncClient = asyncClient;
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace SoyalControllers
         /// <summary>
         /// Validates whether the response returned from the card reader is valid or not
         /// </summary>
-        /// <param name="response">THe response as byte[]</param>
+        /// <param name="response">The response as byte[]</param>
         /// <returns></returns>
         internal bool IsValidResponse(byte[] response)
         {

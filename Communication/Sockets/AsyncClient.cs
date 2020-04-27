@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Communication.Sockets
 {
-    public class AsyncClient
+    public interface IAsyncClient
+    {
+        Task<byte[]> StartClient(string ip, int port, byte[] msg);
+    }
+
+    public class AsyncClient : IAsyncClient
     {
         // ManualResetEvent instances signal completion.  
         private readonly ManualResetEvent connectDone = new ManualResetEvent(false);
